@@ -1,4 +1,5 @@
-See the website, http://pyhook.sourceforge.net/, for the latest updates to this information.
+A pyHook fork with some updates for support latest Visual Studio compilers.
+See the website, http://pyhook.sourceforge.net/, for the original pyHook project.
 
 Known bugs
 ----------
