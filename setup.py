@@ -1,7 +1,7 @@
 '''A pyHook module fork from Peter P. with some updates.
 
 Python wrapper for out-of-context input hooks in Windows.
-The pyHook package provides callbacks for global mouse and keyboard events in Windows. Python
+The pyWinhook package provides callbacks for global mouse and keyboard events in Windows. Python
 applications register event handlers for user input events such as left mouse down, left mouse up,
 key down, etc. and set the keyboard and/or mouse hook. The underlying C library reports information
 like the time of the event, the name of the window in which the event occurred, the value of the
@@ -27,7 +27,7 @@ doclines = __doc__.split('\n')
 setup(name='pyWinhook',
       version=__version__,
       author='Tungsteno',
-      author_email='tungsteno74@yahoo.it',
+      author_email='contacts00-pywinhook@yahoo.it',
       url='https://github.com/Tungsteno74/pyWinhook',
       download_url=''.join(('https://codeload.github.com/Tungsteno74/pyWinhook/zip/',__version__)),
       license='http://www.opensource.org/licenses/mit-license.php',
