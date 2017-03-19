@@ -1,4 +1,4 @@
-'''pyWinhook: pyHook module fork from Peter P. with some updates.
+'''A pyHook module fork from Peter P. with some updates.
 
 Python wrapper for out-of-context input hooks in Windows.
 The pyHook package provides callbacks for global mouse and keyboard events in Windows. Python
