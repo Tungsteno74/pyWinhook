@@ -13,10 +13,3 @@ Limitations
 -----------
 - pyHook will not work on Win9x (no messages show up) as it uses hooks which
   are not present in Windows systems prior to NT 4.0 SP3.
-
-Website
--------
-Visit http://pyhook.sourceforge.net for binaries, documentation, and tutorials.
-
-Bug reports and feature requests should be reported via the Sourceforge page at
-https://sourceforge.net/projects/pyhook/
