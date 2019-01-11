@@ -1,35 +1,36 @@
+from __future__ import print_function
 import pyWinhook as pyHook
 
 def OnMouseEvent(event):
-  print 'MessageName:',event.MessageName
-  print 'Message:',event.Message
-  print 'Time:',event.Time
-  print 'Window:',event.Window
-  print 'WindowName:',event.WindowName
-  print 'Position:',event.Position
-  print 'Wheel:',event.Wheel
-  print 'Injected:',event.Injected
-  print '---'
+  print('MessageName: %s' % event.MessageName)
+  print('Message: %s' % event.Message)
+  print('Time: %s' % event.Time)
+  print('Window: %s' % event.Window)
+  print('WindowName: %s' % event.WindowName)
+  print('Position: %s' % event.Position)
+  print('Wheel: %s' % event.Wheel)
+  print('Injected: %s' % event.Injected)
+  print('---')
 
   # return True to pass the event to other handlers
   # return False to stop the event from propagating
   return True
 
 def OnKeyboardEvent(event):
-  print 'MessageName:',event.MessageName
-  print 'Message:',event.Message
-  print 'Time:',event.Time
-  print 'Window:',event.Window
-  print 'WindowName:',event.WindowName
-  print 'Ascii:', event.Ascii, chr(event.Ascii)
-  print 'Key:', event.Key
-  print 'KeyID:', event.KeyID
-  print 'ScanCode:', event.ScanCode
-  print 'Extended:', event.Extended
-  print 'Injected:', event.Injected
-  print 'Alt', event.Alt
-  print 'Transition', event.Transition
-  print '---'
+  print('MessageName: %s' % event.MessageName)
+  print('Message: %s' % event.Message)
+  print('Time: %s' % event.Time)
+  print('Window: %s' % event.Window)
+  print('WindowName: %s' % event.WindowName)
+  print('Ascii: %s' %  event.Ascii, chr(event.Ascii))
+  print('Key: %s' %  event.Key)
+  print('KeyID: %s' %  event.KeyID)
+  print('ScanCode: %s' %  event.ScanCode)
+  print('Extended: %s' %  event.Extended)
+  print('Injected: %s' %  event.Injected)
+  print('Alt %s' %  event.Alt)
+  print('Transition %s' %  event.Transition)
+  print('---')
 
   # return True to pass the event to other handlers
   # return False to stop the event from propagating
