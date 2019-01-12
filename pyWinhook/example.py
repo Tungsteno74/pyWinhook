@@ -7,7 +7,7 @@ def OnMouseEvent(event):
   print('Time: %s' % event.Time)
   print('Window: %s' % event.Window)
   print('WindowName: %s' % event.WindowName)
-  print('Position: %s' % event.Position)
+  print('Position: (%d, %d)' % event.Position)
   print('Wheel: %s' % event.Wheel)
   print('Injected: %s' % event.Injected)
   print('---')
