@@ -1,1 +1,1 @@
-from HookManager import *
+from .HookManager import *
