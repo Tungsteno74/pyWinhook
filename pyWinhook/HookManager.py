@@ -1,4 +1,4 @@
-import cpyHook
+from . import cpyHook
 
 def GetKeyState(key_id):
   return cpyHook.cGetKeyState(key_id)

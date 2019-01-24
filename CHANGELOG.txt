@@ -1,4 +1,8 @@
 pyHook Change Log
+----------
+1.6.0 (2019-01-24)
+
+- Added support for Python 3.x 
 
 ----------
 1.5.2 (2017-03-9)
@@ -6,7 +10,6 @@ pyHook Change Log
 - Change the package name from pyHook to pyWinhook.
 - Update setup.py distutils import to setuptools, since this fix the compiling step with last versions of visual studio compilers.
 - Change the package files/folders arrangment to as expected in the python default one.
-
 
 ----------
 1.5.1 (2008-10-07)
