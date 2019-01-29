@@ -36,6 +36,7 @@ setup(name='pyWinhook',
       classifiers = filter(None, classifiers.split('\n')),
       long_description = ' '.join(doclines[2:]),
       packages = ['pyWinhook'],
+      install_requires = ['pywin32'],
       ext_modules = [Extension('pyWinhook._cpyHook', ['pyWinhook/cpyHook.i'], libraries=libs)],
       data_files = [('Lib/site-packages/pyWinhook', ['LICENSE.txt', 'README.txt', 'CHANGELOG.txt'])],
       keywords = 'hook win32 win64 keyboard input user control'
