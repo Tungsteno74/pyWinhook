@@ -18,7 +18,7 @@ Topic :: System :: Monitoring
 Topic :: Software Development :: Libraries :: Python Modules
 Operating System :: Microsoft :: Windows
 """
-__version__='1.6.0'
+__version__='1.6.1d'
 from setuptools import setup, Extension
 
 libs = ['user32']
