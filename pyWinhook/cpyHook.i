@@ -77,7 +77,7 @@
     ascii = ConvertToASCII(kbd->vkCode, kbd->scanCode);
 
     // pass the message on to the Python function
-    arglist = Py_BuildValue("(iiiiiiiz)", wParam, kbd->vkCode, kbd->scanCode, ascii,
+    arglist = Py_BuildValue("(iiiiiiiu)", wParam, kbd->vkCode, kbd->scanCode, ascii,
                             kbd->flags, kbd->time, hwnd, win_name);
     r = PyObject_CallObject(callback_funcs[WH_KEYBOARD_LL], arglist);
 
@@ -132,7 +132,7 @@
     }
 
     //build the argument list to the callback function
-    arglist = Py_BuildValue("(iiiiiiiz)", wParam, ms->pt.x, ms->pt.y, ms->mouseData,
+    arglist = Py_BuildValue("(iiiiiiiu)", wParam, ms->pt.x, ms->pt.y, ms->mouseData,
                             ms->flags, ms->time, hwnd, win_name);
     r = PyObject_CallObject(callback_funcs[WH_MOUSE_LL], arglist);
 
