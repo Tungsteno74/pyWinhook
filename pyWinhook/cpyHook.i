@@ -42,7 +42,7 @@
     PyObject *arglist, *r;
     PKBDLLHOOKSTRUCT kbd;
     HWND hwnd;
-    PSTR win_name = NULL;
+    PWSTR win_name = NULL;
     unsigned short ascii = 0;
     static int win_len;
     static long result;
@@ -69,7 +69,7 @@
     // grab the window name if possible
     win_len = GetWindowTextLength(hwnd);
     if(win_len > 0) {
-      win_name = (PSTR) malloc(sizeof(char) * win_len + 1);
+      win_name = (PWSTR) malloc(sizeof(char) * win_len + 1);
       GetWindowText(hwnd, win_name, win_len + 1);
     }
 
@@ -111,7 +111,7 @@
     PyObject *arglist, *r;
     PMSLLHOOKSTRUCT ms;
     HWND hwnd;
-    PSTR win_name = NULL;
+    PWSTR win_name = NULL;
     static int win_len;
     static long result;
     long pass = 1;
@@ -127,7 +127,7 @@
     //grab the window name if possible
     win_len = GetWindowTextLength(hwnd);
     if(win_len > 0) {
-      win_name = (PSTR) malloc(sizeof(char) * win_len + 1);
+      win_name = (PWSTR) malloc(sizeof(char) * win_len + 1);
       GetWindowText(hwnd, win_name, win_len + 1);
     }
 
