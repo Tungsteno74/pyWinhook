@@ -67,10 +67,10 @@
     hwnd = GetForegroundWindow();
 
     // grab the window name if possible
-    win_len = GetWindowTextLength(hwnd);
+    win_len = GetWindowTextLengthW(hwnd);
     if(win_len > 0) {
-      win_name = (PWSTR) malloc(sizeof(char) * win_len + 1);
-      GetWindowText(hwnd, win_name, win_len + 1);
+      win_name = (PWSTR) malloc(sizeof(wchar_t) * win_len + 1);
+      GetWindowTextW(hwnd, win_name, win_len + 1);
     }
 
     // convert to an ASCII code if possible
@@ -125,10 +125,10 @@
     hwnd = WindowFromPoint(ms->pt);
 
     //grab the window name if possible
-    win_len = GetWindowTextLength(hwnd);
+    win_len = GetWindowTextLengthW(hwnd);
     if(win_len > 0) {
-      win_name = (PWSTR) malloc(sizeof(char) * win_len + 1);
-      GetWindowText(hwnd, win_name, win_len + 1);
+      win_name = (PWSTR) malloc(sizeof(wchar_t) * win_len + 1);
+      GetWindowTextW(hwnd, win_name, win_len + 1);
     }
 
     //build the argument list to the callback function
