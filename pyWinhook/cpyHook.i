@@ -5,6 +5,10 @@
   #define _WIN32_WINNT 0x400
   #include "windows.h"
 
+  #if PY_MAJOR_VERSION >= 3
+    #define PY3K
+  #endif
+
   PyObject* callback_funcs[WH_MAX];
   HHOOK hHooks[WH_MAX];
   BYTE key_state[256];
@@ -42,7 +46,7 @@
     PyObject *arglist, *r;
     PKBDLLHOOKSTRUCT kbd;
     HWND hwnd;
-    PSTR win_name = NULL;
+    PWSTR win_name = NULL;
     unsigned short ascii = 0;
     static int win_len;
     static long result;
@@ -66,19 +70,33 @@
     // get the current foreground window (might not be the real window that received the event)
     hwnd = GetForegroundWindow();
 
+    // convert to an ASCII code if possible
+    ascii = ConvertToASCII(kbd->vkCode, kbd->scanCode);
+
+#ifdef PY3K
+    // grab the window name if possible
+    win_len = GetWindowTextLengthW(hwnd);
+    if(win_len > 0) {
+      win_name = (PWSTR) malloc(sizeof(wchar_t) * win_len + 1);
+      GetWindowTextW(hwnd, win_name, win_len + 1);
+    }
+
+    //build the argument list to the callback function
+    arglist = Py_BuildValue("(iiiiiiiu)", wParam, kbd->vkCode, kbd->scanCode, ascii,
+                            kbd->flags, kbd->time, hwnd, win_name);
+#else
     // grab the window name if possible
     win_len = GetWindowTextLength(hwnd);
     if(win_len > 0) {
       win_name = (PSTR) malloc(sizeof(char) * win_len + 1);
       GetWindowText(hwnd, win_name, win_len + 1);
-    }
-
-    // convert to an ASCII code if possible
-    ascii = ConvertToASCII(kbd->vkCode, kbd->scanCode);
-
-    // pass the message on to the Python function
+    } 
+    
+    //build the argument list to the callback function
     arglist = Py_BuildValue("(iiiiiiiz)", wParam, kbd->vkCode, kbd->scanCode, ascii,
                             kbd->flags, kbd->time, hwnd, win_name);
+#endif
+
     r = PyObject_CallObject(callback_funcs[WH_KEYBOARD_LL], arglist);
 
     // check if we should pass the event on or not
@@ -111,7 +129,7 @@
     PyObject *arglist, *r;
     PMSLLHOOKSTRUCT ms;
     HWND hwnd;
-    PSTR win_name = NULL;
+    PWSTR win_name = NULL;
     static int win_len;
     static long result;
     long pass = 1;
@@ -124,6 +142,18 @@
     ms = (PMSLLHOOKSTRUCT)lParam;
     hwnd = WindowFromPoint(ms->pt);
 
+#ifdef PY3K
+    //grab the window name if possible
+    win_len = GetWindowTextLengthW(hwnd);
+    if(win_len > 0) {
+      win_name = (PWSTR) malloc(sizeof(wchar_t) * win_len + 1);
+      GetWindowTextW(hwnd, win_name, win_len + 1);
+    }
+
+    //build the argument list to the callback function
+    arglist = Py_BuildValue("(iiiiiiiu)", wParam, ms->pt.x, ms->pt.y, ms->mouseData,
+                            ms->flags, ms->time, hwnd, win_name);
+#else
     //grab the window name if possible
     win_len = GetWindowTextLength(hwnd);
     if(win_len > 0) {
@@ -134,6 +164,8 @@
     //build the argument list to the callback function
     arglist = Py_BuildValue("(iiiiiiiz)", wParam, ms->pt.x, ms->pt.y, ms->mouseData,
                             ms->flags, ms->time, hwnd, win_name);
+#endif
+
     r = PyObject_CallObject(callback_funcs[WH_MOUSE_LL], arglist);
 
     // check if we should pass the event on or not

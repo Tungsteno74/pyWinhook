@@ -18,7 +18,7 @@ Topic :: System :: Monitoring
 Topic :: Software Development :: Libraries :: Python Modules
 Operating System :: Microsoft :: Windows
 """
-__version__='1.6.0'
+__version__='1.6.1d'
 from setuptools import setup, Extension
 
 libs = ['user32']
@@ -33,10 +33,11 @@ setup(name='pyWinhook',
       license='http://www.opensource.org/licenses/mit-license.php',
       platforms=['Win32', 'Win-amd64', 'Win-ia64'],
       description = doclines[0],
-      classifiers = filter(None, classifiers.split('\n')),
+      classifiers = list(filter(None, classifiers.split('\n'))),
       long_description = ' '.join(doclines[2:]),
       packages = ['pyWinhook'],
+      install_requires = ['pywin32'],
       ext_modules = [Extension('pyWinhook._cpyHook', ['pyWinhook/cpyHook.i'], libraries=libs)],
-      data_files = [('Lib/site-packages/pyWinhook', ['LICENSE.txt', 'README.txt', 'CHANGELOG.txt'])],
+      data_files = [('Lib/site-packages/pyWinhook', ['pyWinhook/cpyHook.py', 'LICENSE.txt', 'README.txt', 'CHANGELOG.txt'])],
       keywords = 'hook win32 win64 keyboard input user control'
       )
