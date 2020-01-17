@@ -1,6 +1,11 @@
 pyHook Change Log
 
 ----------
+1.6.2 (2020-01-17)
+
+- Fixed AttributeError: 'HookManager' object has no attribute 'keyboard_hook'
+
+----------
 1.6.1 (2019-02-10)
 
 - add _setup()_ `install_requires` for pywin32 on pypi
