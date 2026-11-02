@@ -103,7 +103,7 @@
     if(r == NULL)
       PyErr_Print();
     else
-      pass = PyInt_AsLong(r);
+      pass = PyLong_AsLong(r);
 
     Py_XDECREF(r);
     Py_DECREF(arglist);
@@ -172,7 +172,7 @@
     if(r == NULL)
       PyErr_Print();
     else
-      pass = PyInt_AsLong(r);
+      pass = PyLong_AsLong(r);
 
     Py_XDECREF(r);
     Py_DECREF(arglist);
