@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyWinhook"
+version = "1.6.2"
+description = "A pyHook module fork from Peter P. with some updates."
+
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Tungsteno", email = "contacts00-pywinhook@yahoo.it" },
+]
+keywords = []
+classifiers = [
+]
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = ["swig"]
+
+[project.urls]
+Homepage = "https://github.com/Tungsteno74/pyWinhook"
+
